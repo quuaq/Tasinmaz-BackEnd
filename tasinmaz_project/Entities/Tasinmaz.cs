@@ -1,14 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using tasinmaz_project.Entities.Concrete;
 
 namespace tasinmaz_project.Entities.Concrete
 {
     public class Tasinmaz
     {
-        [Key, Column("tasinmaz_id")]
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("tasinmaz_id")]
         public int tasinmaz_id { get; set; }
+
         public string ada { get; set; }
         public string parsel { get; set; }
         public string nitelik { get; set; }
@@ -19,8 +20,5 @@ namespace tasinmaz_project.Entities.Concrete
 
         [ForeignKey("mahalle_id")]
         public virtual Mahalle Mahalle { get; set; }
-
-        
-
     }
 }

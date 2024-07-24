@@ -39,6 +39,19 @@ namespace tasinmaz_project
                 });
             });
 
+
+            //Yeni Eklene CORS Uygulamasý
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
+
             //Migration oluþturabilmek için startup dosyasýný yapýlandýrdýk.
             services.AddDbContext<Context>(options =>
               options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
@@ -66,6 +79,9 @@ namespace tasinmaz_project
                 //c.RoutePrefix = string.Empty; // Swagger UI ana sayfa olarak kök URL'de yer alacak
             });
 
+            // CORS middleware'ini ekleyin
+            app.UseCors("AllowAllOrigins");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -73,3 +89,4 @@ namespace tasinmaz_project
         }
     }
 }
+
