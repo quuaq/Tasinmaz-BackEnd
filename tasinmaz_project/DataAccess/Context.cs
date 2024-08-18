@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using tasinmaz_project.Entities.Concrete;
 
 namespace tasinmaz_project.DataAccess
@@ -8,11 +9,9 @@ namespace tasinmaz_project.DataAccess
         // Yapıcı Metot
         public Context(DbContextOptions<Context> options) : base(options)
         {
-
         }
 
-
-        //Mahalle POST için eklendi.
+        // Mahalle POST için eklendi.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Mahalle>()
@@ -24,6 +23,11 @@ namespace tasinmaz_project.DataAccess
                 .HasOne(i => i.Sehir)
                 .WithMany()
                 .HasForeignKey(i => i.sehir_id);
+
+            modelBuilder.Entity<Log>()
+                .HasOne(log => log.Kullanici)
+                .WithMany()
+                .HasForeignKey(log => log.kullanici_id);
         }
 
         public DbSet<Kullanici> kullanici { get; set; }
@@ -33,7 +37,4 @@ namespace tasinmaz_project.DataAccess
         public DbSet<Tasinmaz> tasinmaz { get; set; }
         public DbSet<Log> log { get; set; }
     }
-
-
-    
 }

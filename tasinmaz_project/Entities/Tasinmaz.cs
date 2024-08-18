@@ -20,5 +20,10 @@ namespace tasinmaz_project.Entities.Concrete
 
         [ForeignKey("mahalle_id")]
         public virtual Mahalle Mahalle { get; set; }
+
+        public int kullanici_id { get; set; }
+        [ForeignKey("kullanici_id")]
+        public virtual Kullanici Kullanici { get; set; }
+
     }
 }

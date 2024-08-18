@@ -17,7 +17,5 @@ namespace tasinmaz_project.Entities.Concrete
 
         [ForeignKey("kullanici_id")]
         public virtual Kullanici Kullanici { get; set; }
-
-
     }
 }

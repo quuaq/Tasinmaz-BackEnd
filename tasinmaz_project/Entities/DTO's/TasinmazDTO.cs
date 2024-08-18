@@ -1,9 +1,14 @@
-﻿public class TasinmazDto
+﻿
+namespace tasinmaz_project.Entities.DTO_s
 {
-    public string ada { get; set; }
-    public string parsel { get; set; }
-    public string nitelik { get; set; }
-    public string koordinat { get; set; }
-    public string adres { get; set; }
-    public int mahalle_id { get; set; }
+    public class TasinmazDto
+    {
+        public string Ada { get; set; } // Ada
+        public string Parsel { get; set; } // Parsel
+        public string Nitelik { get; set; } // Nitelik
+        public string Koordinat { get; set; } // Koordinat
+        public string Adres { get; set; } // Adres
+        public int Mahalle_id { get; set; } // Mahalle ID
+
+    }
 }

@@ -1,188 +1,10 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
-//using System.Collections.Generic;
-//using System.Linq;
-//using tasinmaz_project.DataAccess;
-//using tasinmaz_project.Entities.Concrete;
-
-//[ApiController]
-//[Route("api/[controller]")]
-//public class TasinmazController : ControllerBase
-//{
-//    private readonly Context _context;
-
-//    public TasinmazController(Context context)
-//    {
-//        _context = context;
-//    }
-
-//    // GET: api/Tasinmaz
-//    [HttpGet]
-//    public ActionResult<IEnumerable<Tasinmaz>> GetTasinmazlar()
-//    {
-//        return _context.tasinmaz.ToList();
-//    }
-
-//    // GET: api/Tasinmaz/5
-//    [HttpGet("{id}")]
-//    public ActionResult<Tasinmaz> GetTasinmaz(int id)
-//    {
-//        var tasinmaz = _context.tasinmaz.Find(id);
-//        if (tasinmaz == null)
-//        {
-//            return NotFound();
-//        }
-//        return tasinmaz;
-//    }
-
-//    // POST: api/Tasinmaz
-//    [HttpPost]
-//    public ActionResult<Tasinmaz> PostTasinmaz(Tasinmaz tasinmaz)
-//    {
-//        _context.tasinmaz.Add(tasinmaz);
-//        _context.SaveChanges();
-//        return CreatedAtAction(nameof(GetTasinmaz), new { id = tasinmaz.tasinmaz_id }, tasinmaz);
-//    }
-
-//    // PUT: api/Tasinmaz/5
-//    [HttpPut("{id}")]
-//    public IActionResult PutTasinmaz(int id, Tasinmaz tasinmaz)
-//    {
-//        if (id != tasinmaz.tasinmaz_id)
-//        {
-//            return BadRequest();
-//        }
-//        _context.Entry(tasinmaz).State = EntityState.Modified;
-//        _context.SaveChanges();
-//        return NoContent();
-//    }
-
-//    // DELETE: api/Tasinmaz/5
-//    [HttpDelete("{id}")]
-//    public IActionResult DeleteTasinmaz(int id)
-//    {
-//        var tasinmaz = _context.tasinmaz.Find(id);
-//        if (tasinmaz == null)
-//        {
-//            return NotFound();
-//        }
-//        _context.tasinmaz.Remove(tasinmaz);
-//        _context.SaveChanges();
-//        return NoContent();
-//    }
-//}
-
-
-// GÜNCELLENMİŞ TAŞINMAZ API
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
-//using System.Collections.Generic;
-//using System.Linq;
-//using tasinmaz_project.DataAccess;
-//using tasinmaz_project.Entities.Concrete;
-
-//[ApiController]
-//[Route("api/[controller]")]
-//public class TasinmazController : ControllerBase
-//{
-//    private readonly Context _context;
-
-//    public TasinmazController(Context context)
-//    {
-//        _context = context;
-//    }
-
-//    // GET: api/Tasinmaz
-//    [HttpGet]
-//    public ActionResult<IEnumerable<Tasinmaz>> GetTasinmazlar()
-//    {
-//        return _context.tasinmaz
-//                       .Include(t => t.Mahalle)
-//                       .ThenInclude(m => m.Ilce)
-//                       .ThenInclude(i => i.Sehir)
-//                       .ToList();
-//    }
-
-//    // GET: api/Tasinmaz/5
-//    [HttpGet("{id}")]
-//    public ActionResult<Tasinmaz> GetTasinmaz(int id)
-//    {
-//        var tasinmaz = _context.tasinmaz
-//                               .Include(t => t.Mahalle)
-//                               .ThenInclude(m => m.Ilce)
-//                               .ThenInclude(i => i.Sehir)
-//                               .FirstOrDefault(t => t.tasinmaz_id == id);
-//        if (tasinmaz == null)
-//        {
-//            return NotFound();
-//        }
-//        return tasinmaz;
-//    }
-
-//    // POST: api/Tasinmaz
-//    [HttpPost]
-//    public ActionResult<Tasinmaz> PostTasinmaz(Tasinmaz tasinmaz)
-//    {
-//        var mahalle = _context.mahalle
-//                              .Include(m => m.Ilce)
-//                              .ThenInclude(i => i.Sehir)
-//                              .FirstOrDefault(m => m.mahalle_id == tasinmaz.mahalle_id);
-
-//        if (mahalle == null)
-//        {
-//            return BadRequest("Invalid Mahalle ID");
-//        }
-
-//        tasinmaz.Mahalle = mahalle;
-
-//        _context.tasinmaz.Add(tasinmaz);
-//        _context.SaveChanges();
-//        return CreatedAtAction(nameof(GetTasinmaz), new { id = tasinmaz.tasinmaz_id }, tasinmaz);
-//    }
-
-//    // PUT: api/Tasinmaz/5
-//    [HttpPut("{id}")]
-//    public IActionResult PutTasinmaz(int id, Tasinmaz tasinmaz)
-//    {
-//        if (id != tasinmaz.tasinmaz_id)
-//        {
-//            return BadRequest();
-//        }
-
-//        var mahalle = _context.mahalle
-//                              .Include(m => m.Ilce)
-//                              .ThenInclude(i => i.Sehir)
-//                              .FirstOrDefault(m => m.mahalle_id == tasinmaz.mahalle_id);
-
-//        if (mahalle != null)
-//        {
-//            tasinmaz.Mahalle = mahalle;
-//        }
-
-//        _context.Entry(tasinmaz).State = EntityState.Modified;
-//        _context.SaveChanges();
-//        return NoContent();
-//    }
-
-//    // DELETE: api/Tasinmaz/5
-//    [HttpDelete("{id}")]
-//    public IActionResult DeleteTasinmaz(int id)
-//    {
-//        var tasinmaz = _context.tasinmaz.Find(id);
-//        if (tasinmaz == null)
-//        {
-//            return NotFound();
-//        }
-//        _context.tasinmaz.Remove(tasinmaz);
-//        _context.SaveChanges();
-//        return NoContent();
-//    }
-//}
-
+﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using tasinmaz_project.DataAccess;
 using tasinmaz_project.Entities.Concrete;
 
@@ -276,8 +98,30 @@ public class TasinmazController : ControllerBase
 
         return mahalleler;
     }
-    // POST: api/Tasinmaz
+
+
+
+    // GET: api/Tasinmaz/user/{userId}
+    [HttpGet("user/{userId}")]
+    public ActionResult<IEnumerable<Tasinmaz>> GetUserTasinmazlar(int userId)
+    {
+        var tasinmazlar = _context.tasinmaz
+                                  .Include(t => t.Mahalle)
+                                  .ThenInclude(m => m.Ilce)
+                                  .ThenInclude(i => i.Sehir)
+                                  .Include(t => t.Kullanici) // Kullanici tablosunu dahil ediyoruz
+                                  .Where(t => t.kullanici_id == userId)
+                                  .ToList();
+        if (!tasinmazlar.Any())
+        {
+            return NotFound("No properties found for the given user ID");
+        }
+        return tasinmazlar;
+    }
+
+
     [HttpPost]
+    [Authorize] // Kimlik doğrulama gerektiren endpoint
     public ActionResult<Tasinmaz> PostTasinmaz(Tasinmaz tasinmaz)
     {
         var mahalle = _context.mahalle
@@ -289,6 +133,10 @@ public class TasinmazController : ControllerBase
         {
             return BadRequest("Invalid Mahalle ID");
         }
+
+        // Kullanıcı ID'sini al ve ayarla
+        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+        tasinmaz.kullanici_id = userId;
 
         tasinmaz.Mahalle = mahalle;
 
@@ -335,4 +183,6 @@ public class TasinmazController : ControllerBase
         return NoContent();
     }
 }
+
+
 
