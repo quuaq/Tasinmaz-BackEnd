@@ -10,7 +10,7 @@ namespace tasinmaz_project.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IAuthRepository _authRepository;
+        private readonly IAuthRepository _authRepository; // burada bir 
 
         public UserController(IAuthRepository authRepository)
         {
